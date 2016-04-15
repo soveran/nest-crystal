@@ -1,0 +1,16 @@
+name: nest
+version: 0.1.0
+
+authors:
+  - Michel Martens <mail@soveran.com>
+
+license: MIT
+
+dependencies:
+  resp:
+    github: soveran/resp-crystal
+    branch: master
+
+development_dependencies:
+  crotest:
+    github: emancu/crotest
