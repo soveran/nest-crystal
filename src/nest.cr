@@ -21,18 +21,13 @@
 require "resp"
 
 class Nest
-  def initialize(ns)
-    @ns = ns.to_s
-    @rc = nil
-  end
-  
-  def initialize(ns, rc : Resp)
+  def initialize(ns, rc : Resp? = nil)
     @ns = ns.to_s
     @rc = rc
   end
 
   def [](key)
-    Nest.new("#{@ns}:#{key}")
+    Nest.new("#{@ns}:#{key}", @rc)
   end
 
   def to_s

@@ -52,4 +52,13 @@ describe "foo" do
     assert_equal "OK",   n2.call("SET", "42")
     assert_equal "42",   n2.call("GET")
   end
+
+  it "should propagate the redis client" do
+    c = Resp.new("localhost", 6379)
+
+    n1 = Nest.new("foo", c)
+    n2 = n1["bar"]
+
+    assert_equal "none", n2.call("TYPE")
+  end
 end
