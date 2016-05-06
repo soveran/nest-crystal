@@ -21,7 +21,10 @@
 require "resp"
 
 class Nest
-  def initialize(ns, rc : Resp? = nil)
+  @ns : String
+  @rc : Resp?
+  
+  def initialize(ns, rc = nil)
     @ns = ns.to_s
     @rc = rc
   end
