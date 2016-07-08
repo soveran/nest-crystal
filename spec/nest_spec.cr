@@ -1,7 +1,7 @@
 require "./spec_helper"
 
 before do
-  c = Resp.new("localhost", 6379)
+  c = Resp.new("redis://localhost:6379")
   c.call("FLUSHDB")
 end
 
@@ -40,7 +40,7 @@ describe "foo" do
   it "should accept redis commands" do
     n1 = Nest.new("foo")
     
-    c = Resp.new("localhost", 6379)
+    c = Resp.new("redis://localhost:6379")
     
     assert_equal "none", n1.call(c, "TYPE")
     assert_equal "OK",   n1.call(c, "SET", "42")
@@ -54,7 +54,7 @@ describe "foo" do
   end
 
   it "should propagate the redis client" do
-    c = Resp.new("localhost", 6379)
+    c = Resp.new("redis://localhost:6379")
 
     n1 = Nest.new("foo", c)
     n2 = n1["bar"]

@@ -11,7 +11,7 @@ how important it is to craft the keys that will hold the data.
 ```crystal
 require "resp"
 
-resp = Resp.new("localhost", 6379)
+resp = Resp.new("redis://localhost:6379")
 resp.call("SADD", "event:3:attendees", "Albert")
 resp.call("SMEMBERS", "event:3:attendees") #=> ["Albert"]
 ```
@@ -26,7 +26,7 @@ that are already connected to Redis:
 ```crystal
 require "nest"
 
-resp = Resp.new("localhost", 6379)
+resp = Resp.new("redis://localhost:6379")
 
 event = Nest.new("event", resp)
 event[3][:attendees].call("SADD", "Albert")
@@ -39,7 +39,7 @@ client, and just provide it when invoking the `call` method:
 ```crystal
 require "nest"
 
-resp = Resp.new("localhost", 6379)
+resp = Resp.new("redis://localhost:6379")
 
 event = Nest.new("event")
 event[3][:attendees].call(resp, "SADD", "Albert")
