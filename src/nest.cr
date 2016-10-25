@@ -42,6 +42,6 @@ class Nest
   end
   
   def call(command : String, *args)
-    call(@rc as Resp, command, *args) if @rc
+    call(@rc.as Resp, command, *args) if @rc
   end
 end

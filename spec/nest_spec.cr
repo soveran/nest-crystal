@@ -46,7 +46,7 @@ describe "foo" do
     assert_equal "OK",   n1.call(c, "SET", "42")
     assert_equal "42",   n1.call(c, "GET")
     
-    n2 = Nest.new("bar", c as Resp)
+    n2 = Nest.new("bar", c.as Resp)
      
     assert_equal "none", n2.call("TYPE")
     assert_equal "OK",   n2.call("SET", "42")
